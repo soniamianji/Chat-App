@@ -1,25 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Title from "./Title";
+import MessageList from "./MessageList";
+import SendMessageForm from "./SendMessageForm";
+
+const DUMMY_DATA = [
+  {
+    senderId: "perborgen",
+    text: "who'll win?"
+  },
+  {
+    senderId: "janedoe",
+    text: "who'll win?"
+  }
+];
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      messages: DUMMY_DATA
+    };
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Title />
+        <MessageList messages={this.state.messages} />
+        <SendMessageForm />
       </div>
     );
   }
